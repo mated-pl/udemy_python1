@@ -71,7 +71,7 @@
 # print(flights_1way)
 
 
-# 3.36 eval     # TODO: odtad powtarzac
+# 3.36 eval
 
 # var_x = 10
 # password = 'secret password'
