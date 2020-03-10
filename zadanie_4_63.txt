@@ -1,0 +1,44 @@
+Function ChangeSal started at 2020-03-10 11:26:44.565789
+arguments were used: {}jas 13 True
+
+Function returned: None
+Function ChangeSal started at 2020-03-10 11:27:28.003274
+arguments were used: {}jas 13 True
+
+Function returned: None
+Function ChangeSal started at 2020-03-10 11:27:28.004274
+arguments were used: {}jas 13
+is_Bonus: True
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:13:07.826983
+arguments were used: jas 13 True
+
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:13:07.826983
+arguments were used: jas 13
+is_Bonus: True
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:17:46.601928
+arguments were used: jas 13 True
+
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:17:46.601928
+arguments were used: jas 13
+is_Bonus: True
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:19:31.785944
+arguments were used: jas 13 True
+
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:19:31.786944
+arguments were used: jas 13
+is_Bonus: True
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:24:21.304503
+arguments were used: jas 13 True
+
+Function returned: None
+Function ChangeSal started at 2020-03-10 12:24:21.305504
+arguments were used: jas 13
+is_Bonus: True
+Function returned: None

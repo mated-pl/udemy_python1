@@ -1,0 +1,12 @@
+Function ChangeSal started at 2020-03-10 13:24:41.752581
+arguments were used: jas 13 True
+
+Function returned: C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw\zadanie_4_63_2.txt
+Function ChangeSal started at 2020-03-10 13:25:24.671036
+arguments were used: jas 13 True
+
+Function returned: C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw\zadanie_4_63_2.txt
+Function ChangeSal started at 2020-03-10 13:25:24.672036
+arguments were used: jas 13
+is_Bonus: True
+Function returned: C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw\zadanie_4_63_2.txt
