@@ -193,4 +193,239 @@
 # print(new_func_h(start,end))
 
 
-# 4.60
+# 4.60 wrapper
+
+import functools    # musze zaimportowac zeby dzialal wraper
+
+# def Create_F_wrapper(func):     # tworze f ktora dolozy wraper do func
+#     def F_with_wrapper(*args, **kwargs):    # ma przyjac wszystkie mozliwe arg
+#         print('start f')
+#         result = func(*args, **kwargs)  # wsadzam funkcje z argumentu jako zmienna
+#         print('stop f')
+#     return F_with_wrapper       # zwracam nowa fukcje juz z wraperem
+#
+# @Create_F_wrapper     # dekoruje nowa funkcje tak, zeby trigerowala wraper
+# def ChangeSal(name,value,is_Bonus = False):
+#     print('Salary changed for {} to {}. Bonus - {}'.format(name,value,is_Bonus))
+#
+#
+# print(ChangeSal('jas', 13, True))
+
+
+# 4.61 wrapper zadanie
+
+# from datetime import datetime
+# import functools    # musze zaimportowac zeby dzialal wraper
+#
+# def duration_wrap(func):
+#     def duration_func(*args, **kwargs):
+#         start = datetime.now()
+#         result = func(*args, **kwargs)
+#         stop = datetime.now()
+#         duration = stop - start
+#         print(duration)
+#         return result
+#     return duration_func
+#
+# @duration_wrap
+# def get_sequence(n):
+#     if n <= 0:
+#         return 1
+#     else:
+#         v = 0
+#         for i in range(n):
+#             v += 1 + (get_sequence(i - 1) + get_sequence(i)) / 2
+#         return v
+#
+# get_sequence(1)
+#
+#
+# # wersja z wraperem 'na piechote'
+
+# import time
+#
+# def duration_wrap(func):
+#     def duration_func(*args, **kwargs):
+#         time_start = time.time()
+#         result = func(*args, **kwargs)
+#         time_stop = time.time()
+#         print(">>>>>Function {} executed in {}".format(func.__name__, time_stop - time_start))
+#         return result
+#     return duration_func
+#
+# def get_sequence(n):
+#     if n <= 0:
+#         return 1
+#     else:
+#         v = 0
+#         for i in range(n):
+#             v += 1 + (get_sequence(i - 1) + get_sequence(i)) / 2
+#         return v
+#
+# print(get_sequence(5))
+# wrapper_get_sequence = duration_wrap(get_sequence)
+# print(wrapper_get_sequence(7))
+
+
+# 4.63 wrapper z parametrem
+
+import datetime
+
+# wraper zapisze log do pliku. Plik podajemy jako arg osobno dla kazdej funkcji
+# def Create_F_wrapper_log(file_path):
+#     def Create_F_wrapper(func):     # tworze f ktora dolozy wraper do func
+#         def F_with_wrapper(*args, **kwargs):    # ma przyjac wszystkie mozliwe arg
+#             with open(file_path,'a+') as file:
+                    # func.__name__ zwraca nazwe funkcji
+#                 file.write('Function {} started at {}\n'.format(func.__name__, datetime.datetime.now()))
+#                 file.write('arguments were used: ')
+#                 file.write(' '.join('{}'.format(x) for x in args)) # laczy iterowane elementy z args
+#                 file.write('\n')
+#                 file.write(' '.join('{}: {}'.format(k,v) for (k,v) in kwargs.items()))    # as above
+#                 file.write('\n')
+#                 result = func(*args, **kwargs)  # wsadzam funkcje z argumentu jako zmienna
+#                 file.write('Function returned: {}\n'.format(result))
+#             return result
+#         return F_with_wrapper       # zwracam nowa fukcje juz z wraperem
+#     return Create_F_wrapper
+#
+# @Create_F_wrapper_log(r'C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw\zadanie_4_63.txt')     # dekoruje nowa funkcje tak, zeby trigerowala wraper
+# def ChangeSal(name,value,is_Bonus = False):
+#     print('Salary changed for {} to {}. Bonus - {}'.format(name,value,is_Bonus))
+#
+# print(ChangeSal('jas', 13, True))
+# print(ChangeSal('jas', 13, is_Bonus=True))
+
+
+# 4.64 zadanie wrapper
+
+# import datetime, os, functools
+#
+# path = r'C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw\zadanie_4_64_test_file.txt'
+# path_log = r'C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw\zadanie_4_64_log.txt'
+#
+# def log_wrapper(operation, path_log):
+#     def f_wrapped_B(func):
+#         def f_wrapping_C(*args,**kwargs):
+#             with open(path_log, 'w') as file:
+#                 file.write('Action {} executed on {} on {}\n'.format(operation, path, datetime.datetime.now()))
+#             result = func(*args, **kwargs)
+#             return result
+#         return f_wrapping_C
+#     return f_wrapped_B
+#
+# @log_wrapper('Create', path_log)    # dwa parametry
+# def create_file(path):
+#     f = open(path, "a")
+#     f.close()
+#
+# @log_wrapper('Delete', path_log)
+# def delete_file(path):
+#     os.remove(path)
+#
+# create_file(path)
+
+
+# 4.66 email
+
+# import smtplib
+# mailFrom = "python kurs"    # te zmienne musza byc tak sformatowane zeby smtplib je przelknal
+# mailTo = ['dupa1@dupa.pl', 'elmatte@gmail.com']
+# mailSubject = 'temat'
+# mailBody = '''helo
+# this is email
+# test'''
+#
+# # wrzucamy zmienne do tekstu formatujac odpowiednio
+# message = '''From: {}
+# Subject: {}
+#
+# {}
+# '''.format(mailFrom,mailSubject,mailBody)
+#
+# user = 'testowyadres@gmail.com'
+# password = 'jakies_haslo'
+#
+# try:
+#     server = smtplib.SMTP_SSL('smtp.gmail.com',465)
+#     server.ehlo()
+#     server.login(user,password) # wymagane parametry
+#     server.sendmail(user, mailTo, message) # wymagane parametry
+#     server.close()
+#     print('main sent')
+# except:
+#     print('error')
+
+
+# 4.69 partial
+
+# import smtplib, functools
+# # definiujemy funkcje normalnie
+# def send_email(account, passw, sender, reciever, subject, body)
+#     message = '''From: {}
+#     Subject: {}
+#
+#     {}
+#     '''.format(reciever,subject,body)
+#
+#     try:
+#         server = smtplib.SMTP_SSL('smtp.gmail.com',465)
+#         server.ehlo()
+#         server.login(account,passw) # wymagane parametry
+#         server.sendmail(account, sender, message) # wymagane parametry
+#         server.close()
+#         print('main sent')
+#         return True # zeby latwo sprawdzic czy sie udalo
+#     except:
+#         print('error')
+#         return False
+#
+# # wprowadzam customowe dane
+# user = 'testowyadres@gmail.com'
+# password = 'jakies_haslo'
+# mailFrom = "python kurs"    # te zmienne musza byc tak sformatowane zeby smtplib je przelknal
+# mailTo = ['dupa1@dupa.pl', 'elmatte@gmail.com']
+# mailSubject = 'temat'
+# mailBody = '''helo
+# this is email
+# test'''
+#
+# # tworze funkcje partial. Najlepiej podac arg po nazwie
+# send_from_custom_account_partial = functools.partial(send_email, account=user,passw=password)
+# # podaje tylko customowe paramentry
+# send_from_custom_account_partial(sender = mailFrom, reciever=mailTo, subject=mailSubject, body=mailBody)
+
+
+# 4.70 partial zadanie
+
+# import requests
+# import os
+#
+#
+# def save_url_file(url, dir, file, msg):
+#     print(msg.format(file))
+#
+#     r = requests.get(url, stream=True)
+#     file_path = os.path.join(dir, file)
+#
+#     with open(file_path, "wb") as f:
+#         f.write(r.content)
+#
+# msg = "Please wait - the file {} will be downloaded"
+#
+# # url = 'http://mobilo24.eu/spis'
+# # dir = r'C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw'
+# # file = 'spis.html'
+# # save_url_file(url, dir, file, msg)
+#
+# url = 'https://www.mobilo24.eu/wp-content/uploads/2015/11/Mobilo_logo_kolko_512-565b1626v1_site_icon.png'
+# dir = r'C:\Users\MD\PycharmProjects\udemy_py_sred_zaaw'
+# file = 'logo.png'
+# # save_url_file(url, dir, file, msg)
+#
+# save_url_part = functools.partial(save_url_file, file=file, msg = msg)
+# save_url_part(url=url, dir=dir)
+
+
+# 4.72 cache
+
