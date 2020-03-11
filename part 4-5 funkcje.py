@@ -429,3 +429,78 @@ import datetime
 
 # 4.72 cache
 
+# import functools
+# import time
+#
+# @functools.lru_cache()  # wraper wbudowany cachowanie
+# def factorial(n):
+#     time.sleep(0.1) # opoznienie specjalnie
+#     if n ==1:
+#         return 1
+#     else:
+#         return n*factorial(n-1)
+#
+# start = time.time()
+# for i in range(1,10):
+#     print('{}! = {}'.format(i,factorial(i)))
+# stop = time.time()
+# print('exec time', stop-start)
+# print(factorial.cache_info())   # wyswietla paramentry cachowania
+
+
+# 4.73 cache zadanie
+
+# import functools, time
+#
+# @functools.lru_cache()
+# def fib(n):
+#     if n <= 2:
+#         result = n
+#     else:
+#         result = fib(n - 1) + fib(n - 2)
+#
+#     return result
+#
+# start = time.time()
+# for i in range(30):
+#     fib(i)
+# stop = time.time()
+# print('exec time', stop-start)
+
+
+# 4.75 lambda
+
+# x = 10
+# f = lambda x: x*2
+# print(f(x))
+#
+# g = lambda x,y: x*y
+# print(g(2,3))
+#
+#
+# lista = [1,2,3,4,5,6,7,8,9]
+#
+# def is_odd(x):
+#     return x % 2 != 0   # dzielenie bez reszty rozne od 0
+#
+# # funkcja filter odfiltruje elementy z listy ktore w funkcji is_odd daja wynik False
+# filtered_list = list(filter(is_odd,lista))  # is_odd podaje bez ().
+# print(filtered_list)
+#
+# # zamiast definiowac fukncje is odd
+# filtered_list = list(filter(lambda x: x % 2 != 0 ,lista))
+# print(filtered_list)
+
+
+# 4.76 lambda zadanie
+
+text_list = ['x','xxx','xxxxx','xxxxxxx','']
+
+f = lambda x: len(x)
+print(f('asd'))
+
+# funkcja map uruchamia funkcje f na kazdym elemencie listy text_list
+mapa = map(f,text_list)
+print(list(mapa))
+# drugi sposob
+print(list(map(lambda x: len(x),text_list)))
