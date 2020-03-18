@@ -82,7 +82,7 @@
 #     print(temp)
 
 
-# 4.54   funkcja w funkcji      #TODO powtarzac odtad
+# 4.54   funkcja w funkcji
 
 # def Bake(what):
 #     print('Baking {}'.format(what))
@@ -195,8 +195,8 @@
 
 # 4.60 wrapper
 
-import functools    # musze zaimportowac zeby dzialal wraper
-
+# import functools    # musze zaimportowac zeby dzialal wraper
+#
 # def Create_F_wrapper(func):     # tworze f ktora dolozy wraper do func
 #     def F_with_wrapper(*args, **kwargs):    # ma przyjac wszystkie mozliwe arg
 #         print('start f')
@@ -207,7 +207,6 @@ import functools    # musze zaimportowac zeby dzialal wraper
 # @Create_F_wrapper     # dekoruje nowa funkcje tak, zeby trigerowala wraper
 # def ChangeSal(name,value,is_Bonus = False):
 #     print('Salary changed for {} to {}. Bonus - {}'.format(name,value,is_Bonus))
-#
 #
 # print(ChangeSal('jas', 13, True))
 
